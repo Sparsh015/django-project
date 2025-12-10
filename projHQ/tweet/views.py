@@ -22,7 +22,7 @@ def tweet_create(request):
     else:
         form = TweetForm()
     
-    return render(request, 'tweet_create.html', {'form': form})
+    return render(request, 'tweet_form.html', {'form': form})
 
 def tweet_edit(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk = tweet_id, user = request.user)
@@ -38,7 +38,7 @@ def tweet_edit(request, tweet_id):
     
     else:
         form = TweetForm(instance=tweet)
-    return render(request, 'tweet_create.html', {'form': form})
+    return render(request, 'tweet_form.html', {'form': form})
 
 def tweet_delete(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk=tweet_id, user = request.user)
