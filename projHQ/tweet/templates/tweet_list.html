@@ -7,7 +7,7 @@ Tweet Title Page
 {% block content %}
 <h1 class='text-center mt-4'>Welcome to Fullstack basic Project</h1>
 
-<a class = "btn btn-primary mb-5 font-arial" href="{% url 'tweet_create' %}"> Crate a Tweet </a>
+<a class = "btn btn-primary mb-5 font-arial" href="{% url 'tweet_create' %}"> Create a Tweet </a>
 <div class="container row gap-3">
     {% for tweet in tweets %}
     <div class="card" style="width: 18rem;">
