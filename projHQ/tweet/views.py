@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tweet
 from .forms import TweetForm, UserRegisterationForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+
 
 # Create your views here.
 
@@ -54,8 +56,14 @@ def tweet_delete(request, tweet_id):
     return render(request, 'tweet_delete.html', {'tweet': tweet})
 
 def register(request):
-    if:
-    
+    if request.method == "POST":
+        form = UserRegisterationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
+            login(request, user)
+            return redirect('tweet_list')
     else:
         form = UserRegisterationForm()
 
